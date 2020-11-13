@@ -82,6 +82,32 @@ public class TestRepresentant {
 		}
 
 	}
+        
+        @Test 
+        public void testCAMoisNegatif() {
+            try {
+                r.enregistrerCA(-2, FIXE_BASTIDE);
+                fail("Un mois < 0 doit lever une exception ");
+            } catch (IllegalArgumentException e){ 
+            }
+        }
+        
+        @Test
+        public void testSalMensMoisImpossible() {
+            try {
+                r.salaireMensuel(13, 0.2f);
+                fail("Un mois > 11 doit lever une exception ");
+            } catch (IllegalArgumentException e){ 
+            } 
+        }
 	
+        @Test
+        public void testPourcentageImpossible() {
+            try {
+                r.salaireMensuel(0, -3f);
+                fail("Un pourcentage < 0 doit lever une exception ");
+            } catch (IllegalArgumentException e){ 
+            } 
+        }
 	
 }
